@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    android:descendantFocusability="blocksDescendants"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/sy_icon"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_launcher"
+        android:layout_width="100dp"
+        android:layout_height="105dp" />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@+id/sy_icon"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:id="@+id/sy_titile_diatance"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/title"
+                android:text="华莱士"
+                android:textColor="#292929"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/take_out"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="4dp"
+                android:background="@drawable/shape_meituan_take_out_bg"
+                android:text="外卖"
+                android:textSize="11sp"
+                android:textColor="#ac9466"
+                android:layout_toRightOf="@+id/title"
+                android:visibility="invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/distance"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="16dp"
+                android:text="500m"
+                android:textSize="13sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_below="@+id/sy_titile_diatance"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            android:text="[大庙村]双人豪华套餐，提供免费WiFi"
+            android:textSize="14sp"
+            android:textColor="#959595"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/content"
+            android:layout_marginTop="4dp"
+            android:layout_height="24dp">
+
+            <TextView
+                android:id="@+id/rmb"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="-1dp"
+                android:text="¥"
+                android:textColor="#06c1ae"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/price"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@id/rmb"
+                android:text="88.8"
+                android:textColor="#06c1ae"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/sale_price"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="4dp"
+                android:layout_toRightOf="@id/price"
+                android:paddingBottom="1dp"
+                android:text="门市价：¥135.5"
+                android:textColor="#959595"
+                android:textSize="13sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/sold"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="16dp"
+                android:text="已售35666"
+                android:textColor="#959595"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

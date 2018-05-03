@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/sy_title"
+        android:background="#09c0ae"
+        android:layout_height="48dp">
+        <TextView
+            android:id="@+id/sy_address"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:drawableRight="@mipmap/meituan_xia"
+            android:text="重庆"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/sy_message"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp"
+            android:src="@mipmap/meituan_xiaoxi"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/sy_scan"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/sy_message"
+            android:src="@mipmap/meituan_saosao"
+            android:layout_marginRight="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginBottom="8sp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_toLeftOf="@id/sy_scan"
+            android:layout_toRightOf="@id/sy_address"
+            android:background="@drawable/shape_meituan_search_bg"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_centerInParent="true"
+                android:drawablePadding="8dp"
+                android:text="蛋糕"
+                android:drawableLeft="@mipmap/meituan_search"
+                android:textColor="#626262"
+                android:textSize="15sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RadioGroup
+        android:id="@+id/sy_nav_bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:background="#f5f5f5"
+        android:orientation="horizontal"
+        android:layout_height="56dp">
+        <RadioButton
+            android:id="@+id/sy_menu"
+            android:button="@null"
+            android:checked="true"
+            android:drawablePadding="-4dp"
+            android:drawableTop="@drawable/selector_meituan_home_nav_bg"
+            android:gravity="center"
+            android:text="首页"
+            android:textSize="13sp"
+            android:paddingTop="6dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+        <RadioButton
+            android:id="@+id/sy_near"
+            android:drawableTop="@drawable/selector_meituan_near_nav_bg"
+            android:text="附近"
+            android:textSize="13sp"
+            android:paddingTop="6dp"
+            android:gravity="center"
+            android:button="@null"
+            android:drawablePadding="-4dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+        <RadioButton
+            android:id="@+id/sy_user"
+            android:drawableTop="@drawable/selector_meituan_user_nav_bg"
+            android:text="我的"
+            android:textSize="13sp"
+            android:gravity="center"
+            android:button="@null"
+            android:paddingTop="6dp"
+            android:drawablePadding="-4dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+    </RadioGroup>
+
+    <View
+        android:id="@+id/sy_nav_bottom_line"
+        android:layout_above="@+id/sy_nav_bottom"
+        android:background="#d6d6d6"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <ScrollView
+        android:layout_above="@+id/sy_nav_bottom_line"
+        android:id="@+id/title"
+        android:layout_below="@+id/sy_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+       <com.example.sy.meituanlistview.MyListView
+           android:id="@+id/list_view"
+           android:layout_below="@+id/guess_you_like"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"></com.example.sy.meituanlistview.MyListView>
+    </ScrollView>
+</RelativeLayout>
