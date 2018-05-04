@@ -18,7 +18,7 @@ import java.util.List;
  * Created by suoyue on 2018/5/3.
  */
 
-public class MeiTuanHomeActivity extends FragmentActivity {
+public class MeiTuanHomeActivity extends FragmentActivity implements MeiTuanHomeAdapter.InnerLister {
     private MyListView myListView;
     private MeiTuanHomeAdapter meiTuanHomeAdapter;
 
@@ -35,19 +35,53 @@ public class MeiTuanHomeActivity extends FragmentActivity {
     }
 
     private void initView(){
-        myListView = findViewById(R.id.list_view);
+        myListView = (MyListView) findViewById(R.id.list_view);
+
     }
 
     private void initListView(){
         meiTuanHomeAdapter = new MeiTuanHomeAdapter(getData(),this);
         myListView.setAdapter(meiTuanHomeAdapter);
 
+        meiTuanHomeAdapter.setInnerLister(this);
+
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MeiTuanHomeActivity.this,"Positon = "+ position,Toast.LENGTH_SHORT).show();
+                Toast.makeText(MeiTuanHomeActivity.this,"你点击了第"+ position + "个列表",Toast.LENGTH_SHORT).show();
             }
         });
+
+        myListView.setOnItemLongClickListener(onItemLongClickListener);
+    }
+
+    private AdapterView.OnItemLongClickListener onItemLongClickListener = new AdapterView.OnItemLongClickListener() {
+        @Override
+        public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+            Toast.makeText(MeiTuanHomeActivity.this,"你长按了第"+ position + "个列表",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+    };
+
+    public void imgClick(View v){
+        int position;
+        position = (int) v.getTag();
+        switch (v.getId()){
+            case R.id.sy_icon:
+                if (position == 0){
+                    Toast.makeText(MeiTuanHomeActivity.this,"Hello,你点击了第"+position+"个头像",Toast.LENGTH_SHORT).show();
+                }
+                if (position == 1){
+                    Toast.makeText(MeiTuanHomeActivity.this,"Hi,你点击了第"+position+"个头像",Toast.LENGTH_SHORT).show();
+                }
+                if (position == 2){
+                    Toast.makeText(MeiTuanHomeActivity.this,"Hello,你点击了第"+position+"个头像",Toast.LENGTH_SHORT).show();
+                }
+                if (position == 3){
+                    Toast.makeText(MeiTuanHomeActivity.this,"Hi,你点击了第"+position+"个头像",Toast.LENGTH_SHORT).show();
+                }
+                break;
+        }
     }
 
     private List<MeiTuanHomeBean> getData(){
@@ -125,6 +159,8 @@ public class MeiTuanHomeActivity extends FragmentActivity {
         View view = LayoutInflater.from(this).inflate(R.layout.layout_guess_you_like,null);
         myListView.addHeaderView(view);
     }
+
+
 
 
     //动态去设置ListView的高度

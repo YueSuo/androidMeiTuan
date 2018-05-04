@@ -14,7 +14,7 @@ import java.util.List;
  * Created by suoyue on 2018/5/3.
  */
 
-public class MeiTuanHomeAdapter extends BaseAdapter {
+public class MeiTuanHomeAdapter extends BaseAdapter implements View.OnClickListener {
 
     private List<MeiTuanHomeBean> mList;
     private LayoutInflater inflater;
@@ -51,14 +51,14 @@ public class MeiTuanHomeAdapter extends BaseAdapter {
             converView = inflater.inflate(R.layout.item_meituan_home,null,false);
 
             viewHolder = new ViewHolder();
-            viewHolder.imageViewSyIcon = converView.findViewById(R.id.sy_icon);
-            viewHolder.textViewTitle = converView.findViewById(R.id.title);
-            viewHolder.textViewDistance = converView.findViewById(R.id.distance);
-            viewHolder.textViewContent = converView.findViewById(R.id.content);
-            viewHolder.textViewPrice = converView.findViewById(R.id.price);
-            viewHolder.textViewSalePrice = converView.findViewById(R.id.sale_price);
-            viewHolder.textViewSold = converView.findViewById(R.id.sold);
-            viewHolder.textViewTakeOut = converView.findViewById(R.id.take_out);
+            viewHolder.imageViewSyIcon = (ImageView) converView.findViewById(R.id.sy_icon);
+            viewHolder.textViewTitle = (TextView) converView.findViewById(R.id.title);
+            viewHolder.textViewDistance = (TextView) converView.findViewById(R.id.distance);
+            viewHolder.textViewContent = (TextView) converView.findViewById(R.id.content);
+            viewHolder.textViewPrice = (TextView) converView.findViewById(R.id.price);
+            viewHolder.textViewSalePrice = (TextView) converView.findViewById(R.id.sale_price);
+            viewHolder.textViewSold = (TextView) converView.findViewById(R.id.sold);
+            viewHolder.textViewTakeOut = (TextView) converView.findViewById(R.id.take_out);
 
             converView.setTag(viewHolder);
         } else {
@@ -81,6 +81,9 @@ public class MeiTuanHomeAdapter extends BaseAdapter {
         viewHolder.textViewSalePrice.setText("门市价：¥" + meiTuanHomeBean.getSalePrice());
         viewHolder.textViewSold.setText("已售" + meiTuanHomeBean.getSold());
 
+        viewHolder.imageViewSyIcon.setOnClickListener(this);
+        viewHolder.imageViewSyIcon.setTag(position);
+
         return converView;
     }
 
@@ -95,4 +98,18 @@ public class MeiTuanHomeAdapter extends BaseAdapter {
         public TextView textViewSold;
         public TextView textViewTakeOut;
     }
+
+    //自定义接口
+    interface InnerLister{
+        void imgClick(View v);
+    }
+    private InnerLister innerLister;
+    public void setInnerLister(InnerLister innerLister){
+        this.innerLister = innerLister;
+    }
+
+    public void onClick(View v) {
+        innerLister.imgClick(v);;
+    }
+
 }
